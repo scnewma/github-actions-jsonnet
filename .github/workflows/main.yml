@@ -20,7 +20,7 @@ name: main
 "on":
   pull_request:
     branches:
-      - $default-branch
+      - main
   push:
     branches:
-      - $default-branch
+      - main

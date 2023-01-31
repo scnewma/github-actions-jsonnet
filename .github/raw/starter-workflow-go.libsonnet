@@ -12,12 +12,13 @@
 local github = import 'github.libsonnet';
 
 {
+  // override in case you have a different default branch
+  _default_branch:: 'main',
+
   name: 'main',
   on: {
-    push: {
-      branches: ['$default-branch'],
-    },
-    pull_request: $.on.push,
+    push: { branches: [$._default_branch] },
+    pull_request: { branches: [$._default_branch] },
   },
   jobs: {
     build: github.Job {
