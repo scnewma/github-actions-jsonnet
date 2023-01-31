@@ -1,21 +1,22 @@
-name: main
-on: [push]
-
 jobs:
-  generate:
+  build:
     runs-on: ubuntu-latest
     steps:
+      - runs: echo "pre checkout"
       - uses: actions/checkout@v3
-
-      - uses: zendesk/setup-jsonnet@v10
-
-      - uses: chrisdickinson/setup-yq@latest
-
-      - name: generate
+        with:
+          path: myrepo
+      - runs: echo "post checkout"
+      - uses: actions/setup-go@v3
+        with:
+          go-version: "1.19"
+      - name: build
         run: |
-          jsonnet .github/raw/main.jsonnet | yq -P > .github/workflows/main-generated.yaml
-
-  main:
-    uses: ./.github/workflows/main-generated.yaml
-    needs: generate
-
+          go build -v ./...
+      - name: test
+        run: |
+          go test -v ./...
+name: main
+"on":
+  pull_request: {}
+  push: {}
