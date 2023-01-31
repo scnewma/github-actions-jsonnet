@@ -1,3 +1,3 @@
 .PHONY: github
 github:
-	jsonnet .github/raw/customized.jsonnet | yq -P > .github/workflows/main.yml
+	jsonnet .github/raw/main.jsonnet | yq -P > .github/workflows/main.yml
