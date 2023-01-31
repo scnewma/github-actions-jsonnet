@@ -16,16 +16,16 @@ local github = import 'github.libsonnet';
   _default_branch:: 'main',
 
   name: 'main',
+
   on: {
     push: { branches: [$._default_branch] },
     pull_request: { branches: [$._default_branch] },
   },
+
   jobs: {
     build: github.Job {
-      local build = self,
-
       _steps+:: {
-        checkout: github.actions.checkout,
+        checkout: github.actions.checkout,  // defaults to _idx=10
 
         setup_go: github.actions.setup_go {
           _idx: 20,
