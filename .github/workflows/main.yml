@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: zendesk/setup-jsonnet@v1
+      - uses: zendesk/setup-jsonnet@v10
 
       - uses: chrisdickinson/setup-yq@latest
 
