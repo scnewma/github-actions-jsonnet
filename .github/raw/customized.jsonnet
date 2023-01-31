@@ -7,7 +7,8 @@ local github = import 'github.libsonnet';
 
       checkout+: {
         with+: {
-          path: 'myrepo',
+          // this is the default, just showing that you can override
+          'fetch-depth': 1,
         },
       },
 
