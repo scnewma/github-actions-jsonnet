@@ -12,11 +12,11 @@ local github = import 'github.libsonnet';
       },
 
       pre_checkout: github.before(steps.checkout) {
-        runs: 'echo "pre checkout"',
+        run: 'echo "pre checkout"',
       },
 
       post_checkout: github.after(steps.checkout) {
-        runs: 'echo "post checkout"',
+        run: 'echo "post checkout"',
       },
     } },
   },
