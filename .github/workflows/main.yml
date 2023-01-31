@@ -16,6 +16,6 @@ jobs:
           jsonnet .github/raw/main.jsonnet | yq -P > .github/workflows/main-generated.yaml
 
   main:
-    uses: ./github/workflows/main-generated.yaml
+    uses: ./.github/workflows/main-generated.yaml
     needs: generate
 
