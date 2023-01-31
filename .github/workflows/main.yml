@@ -1,0 +1,19 @@
+name: main
+on: [push]
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: zendesk/setup-jsonnet@v1
+
+      - uses: chrisdickinson/setup-yq@latest
+
+      - name: generate
+        run: |
+          jsonnet .github/raw/main.jsonnet | yq -P > .github/workflows/main-generated.yaml
+
+      - uses: .github/workflows/main-generated.yaml
+
